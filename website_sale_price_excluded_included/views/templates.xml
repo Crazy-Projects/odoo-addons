@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2015 Antiun Ingeniería S.L. - Jairo Llopis
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<odoo>
+    <!-- Show the new fields for price included and excluded -->
+    <template id="price_included_and_excluded" inherit_id="website_sale.product_price">
+        <xpath expr="//b[@class='oe_price']" position="replace">
+            <!-- TAX Included price -->
+            <b class="oe_price vat_inclusive" style="white-space: nowrap;" t-esc="product.website_price_included"
+               t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            <span class="vat_inclusive vat_suffix">IVA Incluido</span>
+            <!-- TAX Excluded price -->
+            <b class="oe_price vat_exclusive" style="white-space: nowrap;" t-esc="product.website_price_excluded"
+               t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            <span class="vat_exclusive vat_suffix">sin IVA</span>
+        </xpath>
+    </template>
+</odoo>
